@@ -12,7 +12,7 @@ namespace Buyer
     {
         FurnitureContext dbFurniture;
         OrderContext dbOrder;
-        int[] ChairID, TableID, SofaID, BedID;
+        int[] ArticleID;
         int count = 0;
         ArticleChooseForm article;
         public CategoryChooseForm()
@@ -24,10 +24,7 @@ namespace Buyer
 
             dbFurniture.Furnitures.Load();
             dbOrder.Orders.Load();
-            ChairID = new int[dbFurniture.Furnitures.Local.Count];
-            TableID = new int[dbFurniture.Furnitures.Local.Count];
-            SofaID = new int[dbFurniture.Furnitures.Local.Count];
-            BedID = new int[dbFurniture.Furnitures.Local.Count];
+            ArticleID = new int[dbFurniture.Furnitures.Local.Count];
         }
 
         private void buttonChairs_Click(object sender, EventArgs e)
@@ -39,16 +36,16 @@ namespace Buyer
             {
                 if (dbFurniture.Furnitures.Find(i + 1).Type == article.Text)
                 {
-                    ChairID[count] = i + 1;
+                    ArticleID[count] = i + 1;
                     count++;
                 }
 
             }
             article.labelNumber.Text = string.Format("1/{0}", count);
-            article.labelName.Text = dbFurniture.Furnitures.Find(ChairID[0]).Title;
-            article.labelDescription.Text = dbFurniture.Furnitures.Find(ChairID[0]).Description;
-            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(ChairID[0]).Price.ToString());
-            string isAvailable = dbFurniture.Furnitures.Find(ChairID[0]).isAvailable.ToString();
+            article.labelName.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Title;
+            article.labelDescription.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Description;
+            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(ArticleID[0]).Price.ToString());
+            string isAvailable = dbFurniture.Furnitures.Find(ArticleID[0]).isAvailable.ToString();
             if (isAvailable == "True")
             {
                 article.labelStatus.Text = "В наличии";
@@ -59,7 +56,7 @@ namespace Buyer
                 article.labelStatus.Text = "Нет в наличии";
                 article.buttonBuy.Enabled = false;
             }
-            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(ChairID[0]).Picture);
+            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(ArticleID[0]).Picture);
             article.ShowDialog(this);
 
 
@@ -73,16 +70,16 @@ namespace Buyer
             {
                 if (dbFurniture.Furnitures.Find(i + 1).Type == article.Text)
                 {
-                    SofaID[count] = i + 1;
+                    ArticleID[count] = i + 1;
                     count++;
                 }
 
             }
             article.labelNumber.Text = string.Format("1/{0}", count);
-            article.labelName.Text = dbFurniture.Furnitures.Find(SofaID[0]).Title;
-            article.labelDescription.Text = dbFurniture.Furnitures.Find(SofaID[0]).Description;
-            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(SofaID[0]).Price.ToString());
-            string isAvailable = dbFurniture.Furnitures.Find(SofaID[0]).isAvailable.ToString();
+            article.labelName.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Title;
+            article.labelDescription.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Description;
+            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(ArticleID[0]).Price.ToString());
+            string isAvailable = dbFurniture.Furnitures.Find(ArticleID[0]).isAvailable.ToString();
             if (isAvailable == "True")
             {
                 article.labelStatus.Text = "В наличии";
@@ -93,7 +90,7 @@ namespace Buyer
                 article.labelStatus.Text = "Нет в наличии";
                 article.buttonBuy.Enabled = false;
             }
-            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(SofaID[0]).Picture);
+            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(ArticleID[0]).Picture);
             article.ShowDialog(this);
         }
 
@@ -106,16 +103,16 @@ namespace Buyer
             {
                 if (dbFurniture.Furnitures.Find(i + 1).Type == article.Text)
                 {
-                    BedID[count] = i + 1;
+                    ArticleID[count] = i + 1;
                     count++;
                 }
 
             }
             article.labelNumber.Text = string.Format("1/{0}", count);
-            article.labelName.Text = dbFurniture.Furnitures.Find(BedID[0]).Title;
-            article.labelDescription.Text = dbFurniture.Furnitures.Find(BedID[0]).Description;
-            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(BedID[0]).Price.ToString());
-            string isAvailable = dbFurniture.Furnitures.Find(BedID[0]).isAvailable.ToString();
+            article.labelName.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Title;
+            article.labelDescription.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Description;
+            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(ArticleID[0]).Price.ToString());
+            string isAvailable = dbFurniture.Furnitures.Find(ArticleID[0]).isAvailable.ToString();
             if (isAvailable == "True")
             {
                 article.labelStatus.Text = "В наличии";
@@ -126,7 +123,7 @@ namespace Buyer
                 article.labelStatus.Text = "Нет в наличии";
                 article.buttonBuy.Enabled = false;
             }
-            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(BedID[0]).Picture);
+            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(ArticleID[0]).Picture);
             article.ShowDialog(this);
         }
 
@@ -139,16 +136,16 @@ namespace Buyer
             {
                 if (dbFurniture.Furnitures.Find(i + 1).Type == article.Text)
                 {
-                    TableID[count] = i + 1;
+                    ArticleID[count] = i + 1;
                     count++;
                 }
 
             }
             article.labelNumber.Text = string.Format("1/{0}", count);
-            article.labelName.Text = dbFurniture.Furnitures.Find(TableID[0]).Title;
-            article.labelDescription.Text = dbFurniture.Furnitures.Find(TableID[0]).Description;
-            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(TableID[0]).Price.ToString());
-            bool isAvailable = dbFurniture.Furnitures.Find(TableID[0]).isAvailable;
+            article.labelName.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Title;
+            article.labelDescription.Text = dbFurniture.Furnitures.Find(ArticleID[0]).Description;
+            article.labelPrice.Text = string.Format("{0}", dbFurniture.Furnitures.Find(ArticleID[0]).Price.ToString());
+            bool isAvailable = dbFurniture.Furnitures.Find(ArticleID[0]).isAvailable;
             if(isAvailable==true)
             {
                 article.labelStatus.Text = "В наличии";
@@ -159,7 +156,7 @@ namespace Buyer
                 article.labelStatus.Text = "Нет в наличии";
                 article.buttonBuy.Enabled = false;
             }
-            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(TableID[0]).Picture);
+            article.pictureBox1.Image = ByteToImage(dbFurniture.Furnitures.Find(ArticleID[0]).Picture);
 
             article.ShowDialog(this);
         }

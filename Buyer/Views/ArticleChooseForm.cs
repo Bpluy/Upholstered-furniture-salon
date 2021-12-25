@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using Buyer.Contexts;
+using Buyer.Models;
+using System;
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Buyer.Contexts;
-using Buyer.Models;
-using Buyer.Views;
 
 namespace Buyer.Views
 {
@@ -36,16 +29,7 @@ namespace Buyer.Views
         private void buttonPrev_Click(object sender, EventArgs e)
         {
             CurrentType = this.Text;
-            int count = 0;
-            for (int i = 0; i < dbFurniture.Furnitures.Local.Count; i++)
-            {
-                if (dbFurniture.Furnitures.Find(i + 1).Type == CurrentType)
-                {
-                    ArticleID[count] = i + 1;
-                    count++;
-                }
-
-            }
+            int count = ArticleFind(0);
 
             if (CurrentID > 1)
                 CurrentID--;
@@ -136,16 +120,8 @@ namespace Buyer.Views
         private void buttonNext_Click(object sender, EventArgs e)
         {           
             CurrentType = this.Text;
-            int count = 0;
-            for (int i = 0; i < dbFurniture.Furnitures.Local.Count; i++)
-            {
-                if (dbFurniture.Furnitures.Find(i + 1).Type == CurrentType)
-                {
-                    ArticleID[count] = i + 1;
-                    count++;
-                }
-
-            }
+            int count = ArticleFind(0);
+            
 
             if (CurrentID < count)
             {
@@ -234,10 +210,25 @@ namespace Buyer.Views
                         break;
                     }
             }
-        }        
+        } 
+        private int ArticleFind(int count)
+        {
+            for (int i = 0; i < dbFurniture.Furnitures.Local.Count; i++)
+            {
+                if (dbFurniture.Furnitures.Find(i + 1).Type == CurrentType)
+                {
+                    ArticleID[count] = i + 1;
+                    count++;
+                }
+            }
+            return count;
+        }
 
         private void buttonBuy_Click(object sender, EventArgs e)
         {
+            CurrentType = this.Text;
+            if (ArticleID[CurrentID - 1] == 0)
+                ArticleFind(0);
             Order order = new();
             BuyForm buyForm = new();
             buyForm.ShowDialog();
