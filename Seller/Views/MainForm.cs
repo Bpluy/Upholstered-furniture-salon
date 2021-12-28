@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Seller.Contexts;
+﻿using Seller.Contexts;
 using Seller.Models;
 using Seller.Views;
+using System;
 using System.Data.Entity;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Seller
 {
@@ -35,7 +28,7 @@ namespace Seller
         private void buttonAddProduct_Click(object sender, EventArgs e)
         {
             AddForm addForm = new();
-            addForm.buttonChooseImage.Click += ButtonChooseImage_Click;
+            addForm.buttonChooseImage.Click += buttonChooseImage_Click;
             addForm.openFileDialog1 = new();
             fileDialog = addForm.openFileDialog1;
             DialogResult result = addForm.ShowDialog();
@@ -52,7 +45,7 @@ namespace Seller
             dbFurniture.SaveChanges();
         }
 
-        private void ButtonChooseImage_Click(object sender, EventArgs e)
+        private void buttonChooseImage_Click(object sender, EventArgs e)
         {
             if(fileDialog.ShowDialog()==DialogResult.OK)
             {

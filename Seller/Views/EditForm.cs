@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Seller.Contexts;
-using Seller.Views;
-using Seller.Models;
+﻿using Seller.Contexts;
+using System;
 using System.Data.Entity;
+using System.Windows.Forms;
 
 namespace Seller.Views
 {

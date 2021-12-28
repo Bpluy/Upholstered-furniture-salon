@@ -237,7 +237,7 @@ namespace Buyer.Views
             order.PhoneNumber = buyForm.fieldPhoneNumber.Text;
             order.ProductName = dbFurniture.Furnitures.Find(ArticleID[CurrentID-1]).Title;
             order.Price = dbFurniture.Furnitures.Find(ArticleID[CurrentID-1]).Price;
-            order.Status = "In queue";
+            order.Status = "В очереди";
             if (order.BuyerName != "" && order.PhoneNumber != "" && order.Address != "")
             {
                 dbOrder.Orders.Add(order);
